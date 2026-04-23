@@ -12,6 +12,15 @@ Start Mongo:
 ```bash
     docker run --restart unless-stopped --name mongodb -p 27017:27017 -d percona/percona-server-mongodb:7.0 --replSet rs0
     docker exec -it mongodb mongosh --eval "rs.initiate();"
+    
+```
+Start Postgres
+``` remove any existing Postgres container and start a new one
+docker rm -f phone-number-insights-postgres
+docker run --name phone-number-insights-postgres \
+-e POSTGRES_USER=postgres \
+-e POSTGRES_PASSWORD=postgres \
+-d -p 5432:5432 postgres
 ```
 Run the following commands to start services locally:
 
